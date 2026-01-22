@@ -45,6 +45,7 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
       {/* Water Fill Effect */}
       <div className="water-fill">
         <div className="water-wave" />
+        <div className="water-bubbles"><span /></div>
       </div>
 
       {/* Content Grid */}
