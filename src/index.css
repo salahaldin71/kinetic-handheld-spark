@@ -226,9 +226,12 @@
   }
 
   .banner-card:hover .banner-title,
-  .banner-card:hover .banner-description,
-  .banner-card:hover .banner-icon {
+  .banner-card:hover .banner-description {
     color: hsl(0 0% 100%) !important;
+  }
+
+  .banner-card .banner-icon {
+    color: hsl(var(--neon-green)) !important;
   }
 
   .banner-card:hover .parallax-bg {
