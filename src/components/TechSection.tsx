@@ -4,7 +4,7 @@ const apps = [
   {
     title: "HandheldGamingHub Performance",
     subtitle: "Database / FPS",
-    description: "Track real-time performance metrics, FPS benchmarks, and database analytics for all your favorite handheld games.",
+    description: "Community-driven FPS database for handheld gaming devices.",
     icon: "performance" as const,
     href: "https://fps.handheldgaminghub.com",
   },
@@ -18,7 +18,7 @@ const apps = [
   {
     title: "Handheld Matchmaker",
     subtitle: "Questionnaire / Companion",
-    description: "Answer a few questions and let our AI-powered matchmaker find the ideal handheld device for your gaming style.",
+    description: "Answer a few questions and let our matchmaker find the ideal handheld device for your gaming style.",
     icon: "matchmaker" as const,
     href: "https://match.handheldgaminghub.com",
   },
