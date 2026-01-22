@@ -121,68 +121,55 @@
   }
 
   /* Parallax text */
-  /* Electric shock animations */
-  @keyframes electric {
-    0%, 100% {
-      opacity: 0;
-      transform: scale(0.8) rotate(var(--rotation, 0deg));
+  /* Water fill animation */
+  @keyframes water-fill {
+    0% {
+      transform: translateY(100%);
     }
-    5%, 15% {
-      opacity: 1;
-      transform: scale(1) rotate(var(--rotation, 0deg));
-    }
-    10% {
-      opacity: 0.5;
-      transform: scale(1.1) rotate(var(--rotation, 0deg));
-    }
-    20% {
-      opacity: 0;
+    100% {
+      transform: translateY(0%);
     }
   }
 
-  @keyframes arc {
-    0%, 100% {
-      opacity: 0;
-      stroke-dashoffset: 100;
+  @keyframes wave {
+    0% {
+      transform: translateX(0) translateY(0);
     }
-    10%, 30% {
-      opacity: 1;
-      stroke-dashoffset: 0;
+    50% {
+      transform: translateX(-25%) translateY(-3px);
     }
-    15%, 25% {
-      opacity: 0.4;
-    }
-    35% {
-      opacity: 0;
+    100% {
+      transform: translateX(-50%) translateY(0);
     }
   }
 
-  @keyframes flicker {
-    0%, 100% {
-      opacity: 0;
-    }
-    2%, 4%, 8% {
-      opacity: 1;
-    }
-    3%, 6% {
-      opacity: 0.3;
-    }
-    10% {
-      opacity: 0;
-    }
+  .water-fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      hsl(145 100% 35%) 0%,
+      hsl(145 100% 40%) 50%,
+      hsl(145 100% 45%) 100%
+    );
+    transform: translateY(100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
   }
 
-  .animate-electric {
-    animation: electric 3s ease-in-out infinite;
+  .water-wave {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 200%;
+    height: 30px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='%2300b150'/%3E%3C/svg%3E");
+    background-size: 50% 100%;
+    animation: wave 2s linear infinite;
   }
 
-  .animate-arc {
-    animation: arc 2.5s ease-in-out infinite;
-    stroke-dasharray: 100;
-  }
-
-  .animate-flicker {
-    animation: flicker 2s steps(1) infinite;
+  .banner-card:hover .water-fill {
+    transform: translateY(0%);
   }
 
   /* Kinetic hover effect */
@@ -235,7 +222,7 @@
   }
 
   .banner-card:hover {
-    background-color: hsl(var(--neon-green)) !important;
+    border-color: hsl(var(--neon-green));
   }
 
   .banner-card:hover .banner-title,

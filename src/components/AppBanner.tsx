@@ -42,6 +42,10 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
 
   return (
     <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
+      {/* Water Fill Effect */}
+      <div className="water-fill">
+        <div className="water-wave" />
+      </div>
 
       {/* Content Grid */}
       <div className="relative z-10 grid grid-cols-12 gap-4 items-center">
