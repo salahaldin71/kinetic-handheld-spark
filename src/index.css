@@ -316,19 +316,26 @@
   /* 3D perspective for device preview */
   .perspective-container {
     perspective: 1000px;
-    display: flex;
-    align-items: flex-end;
-    height: 100%;
   }
 
   .device-3d {
-    transform: rotateY(-15deg) rotateX(5deg) translateY(10px);
+    transform: rotateY(-15deg) rotateX(5deg);
     transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s ease;
   }
 
-  .banner-card:hover .device-3d {
-    transform: rotateY(-5deg) rotateX(2deg) translateY(-20px) scale(1.05);
+  .device-3d:hover {
+    transform: rotateY(-5deg) rotateX(2deg) scale(1.05);
+  }
+
+  /* Device icon animation - starts at bottom, floats up on hover */
+  .device-icon {
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(12px);
+  }
+
+  .banner-card:hover .device-icon {
+    transform: translateY(0);
   }
 
   /* Banner invert transition */
