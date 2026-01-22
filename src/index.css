@@ -148,9 +148,9 @@
     inset: 0;
     background: linear-gradient(
       to top,
-      hsl(145 100% 35%) 0%,
-      hsl(145 100% 40%) 50%,
-      hsl(145 100% 45%) 100%
+      #00b150 0%,
+      #00c45a 50%,
+      #00d864 100%
     );
     transform: translateY(100%);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -165,8 +165,8 @@
     height: 20px;
     background: linear-gradient(
       to top,
-      hsl(145 100% 45%) 0%,
-      hsl(145 100% 50%) 100%
+      #00d864 0%,
+      #00e86e 100%
     );
     mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='black'/%3E%3C/svg%3E");
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='black'/%3E%3C/svg%3E");
