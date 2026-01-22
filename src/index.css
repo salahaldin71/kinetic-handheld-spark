@@ -237,10 +237,6 @@
 
   .banner-card:hover .device-preview {
     border-color: hsl(0 0% 100%) !important;
-    background-color: hsl(0 0% 100% / 0.2) !important;
-  }
-
-  .banner-card:hover .device-preview .text-primary {
-    color: hsl(var(--neon-green)) !important;
+    color: hsl(0 0% 100%) !important;
   }
 }
