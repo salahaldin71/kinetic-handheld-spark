@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Gamepad2, BarChart3, HelpCircle, MessageSquare } from "lucide-react";
+import SparkEffect from "./SparkEffect";
 
 interface AppBannerProps {
   title: string;
@@ -41,12 +42,8 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
 
   return (
     <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
-      {/* Parallax Background Text */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="parallax-bg animate-parallax whitespace-nowrap text-[80px] font-orbitron font-black text-primary/10 leading-none absolute top-1/2 -translate-y-1/2">
-          {title} • {title} • {title} • {title} •
-        </div>
-      </div>
+      {/* Spark Effects Background */}
+      <SparkEffect />
 
       {/* Content Grid */}
       <div className="relative z-10 grid grid-cols-12 gap-4 items-center">
