@@ -316,16 +316,19 @@
   /* 3D perspective for device preview */
   .perspective-container {
     perspective: 1000px;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
   }
 
   .device-3d {
-    transform: rotateY(-15deg) rotateX(5deg);
+    transform: rotateY(-15deg) rotateX(5deg) translateY(10px);
     transform-style: preserve-3d;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .device-3d:hover {
-    transform: rotateY(-5deg) rotateX(2deg) scale(1.05);
+  .banner-card:hover .device-3d {
+    transform: rotateY(-5deg) rotateX(2deg) translateY(-20px) scale(1.05);
   }
 
   /* Banner invert transition */
