@@ -7,6 +7,7 @@ interface AppBannerProps {
   subtitle: string;
   description: string;
   icon: "performance" | "compare" | "matchmaker" | "reviews";
+  href?: string;
   delay?: number;
 }
 
@@ -17,8 +18,14 @@ const iconMap = {
   reviews: MessageSquare,
 };
 
-const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerProps) => {
+const AppBanner = ({ title, subtitle, description, icon, href, delay = 0 }: AppBannerProps) => {
   const [isGlitching, setIsGlitching] = useState(false);
+
+  const handleClick = () => {
+    if (href) {
+      window.open(href, "_blank", "noopener,noreferrer");
+    }
+  };
   const titleRef = useRef<HTMLHeadingElement>(null);
   const Icon = iconMap[icon];
 
@@ -41,7 +48,7 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
   }, [delay]);
 
   return (
-    <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
+    <div onClick={handleClick} className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
       {/* Water Fill Effect */}
       <div className="water-fill">
         <div className="water-wave" />
