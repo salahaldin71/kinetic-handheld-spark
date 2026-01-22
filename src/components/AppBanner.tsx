@@ -40,10 +40,10 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
   }, [delay]);
 
   return (
-    <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card p-6 cursor-pointer group">
+    <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
       {/* Parallax Background Text */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="parallax-bg animate-parallax whitespace-nowrap text-[120px] font-orbitron font-black text-primary/10 leading-none absolute top-1/2 -translate-y-1/2">
+        <div className="parallax-bg animate-parallax whitespace-nowrap text-[80px] font-orbitron font-black text-primary/10 leading-none absolute top-1/2 -translate-y-1/2">
           {title} • {title} • {title} • {title} •
         </div>
       </div>
@@ -52,8 +52,8 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
       <div className="relative z-10 grid grid-cols-12 gap-4 items-center">
         {/* Title & Description - 8 columns */}
         <div className="col-span-8">
-          <div className="flex items-center gap-3 mb-2">
-            <Icon className="banner-icon w-6 h-6 text-primary" />
+          <div className="flex items-center gap-3 mb-1">
+            <Icon className="banner-icon w-5 h-5 text-primary" />
             <span className="text-xs font-inter uppercase tracking-widest text-muted-foreground">
               {subtitle}
             </span>
@@ -61,14 +61,14 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
           
           <h3
             ref={titleRef}
-            className={`banner-title font-orbitron font-black text-2xl md:text-3xl lg:text-4xl text-foreground mb-3 transition-all ${
+            className={`banner-title font-orbitron font-black text-xl md:text-2xl lg:text-3xl text-foreground mb-1 transition-all ${
               isGlitching ? "glitch-active" : ""
             }`}
           >
             {title}
           </h3>
           
-          <p className="banner-description font-inter text-muted-foreground text-sm md:text-base max-w-xl">
+          <p className="banner-description font-inter text-muted-foreground text-sm max-w-xl">
             {description}
           </p>
         </div>
@@ -76,15 +76,15 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
         {/* Device Preview - 4 columns */}
         <div className="col-span-4 flex justify-end">
           <div className="perspective-container">
-            <div className="device-preview device-3d w-24 h-32 md:w-32 md:h-40 lg:w-40 lg:h-48 border-2 border-primary rounded-xl flex items-center justify-center bg-secondary/50 backdrop-blur-sm">
-              <Icon className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 text-primary animate-float" />
+            <div className="device-preview device-3d w-16 h-20 md:w-20 md:h-24 lg:w-24 lg:h-28 border-2 border-primary rounded-xl flex items-center justify-center bg-secondary/50 backdrop-blur-sm">
+              <Icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-primary animate-float" />
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom accent line */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
+      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
     </div>
   );
 };
