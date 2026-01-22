@@ -84,8 +84,8 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
         {/* Device Preview - 4 columns */}
         <div className="col-span-4 flex justify-end">
           <div className="perspective-container">
-            <div className="device-preview device-3d w-16 h-20 md:w-20 md:h-24 lg:w-24 lg:h-28 border-2 border-primary rounded-xl flex items-center justify-center bg-secondary/50 backdrop-blur-sm">
-              <Icon className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-primary animate-float" />
+            <div className="device-preview device-3d w-16 h-20 md:w-20 md:h-24 lg:w-24 lg:h-28 border-2 border-primary rounded-xl flex items-center justify-center bg-secondary/50 backdrop-blur-sm overflow-hidden">
+              <Icon className="device-icon w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12 text-primary" />
             </div>
           </div>
         </div>
