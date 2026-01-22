@@ -4,7 +4,7 @@ const apps = [
   {
     title: "HandheldGamingHub Performance",
     subtitle: "Database / FPS",
-    description: "Community-driven FPS database for handheld gaming devices.",
+    description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.",
     icon: "performance" as const,
     href: "https://fps.handheldgaminghub.com",
   },
