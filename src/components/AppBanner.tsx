@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Gamepad2, BarChart3, HelpCircle, MessageSquare } from "lucide-react";
-import SparkEffect from "./SparkEffect";
+import ElectricShock from "./ElectricShock";
 
 interface AppBannerProps {
   title: string;
@@ -42,8 +42,8 @@ const AppBanner = ({ title, subtitle, description, icon, delay = 0 }: AppBannerP
 
   return (
     <div className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
-      {/* Spark Effects Background */}
-      <SparkEffect />
+      {/* Electric Shock Effects Background */}
+      <ElectricShock />
 
       {/* Content Grid */}
       <div className="relative z-10 grid grid-cols-12 gap-4 items-center">
