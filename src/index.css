@@ -261,7 +261,27 @@
   }
 
   .banner-card:hover .water-fill {
-    transform: translateY(40%);
+    transform: translateY(20%);
+  }
+
+  @media (max-width: 768px) {
+    .banner-card:hover .water-fill {
+      transform: translateY(10%);
+    }
+    
+    .water-bubbles {
+      height: 80%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner-card:hover .water-fill {
+      transform: translateY(0%);
+    }
+    
+    .water-bubbles {
+      height: 100%;
+    }
   }
 
   /* Water bubbles */
