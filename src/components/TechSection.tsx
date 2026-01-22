@@ -6,24 +6,28 @@ const apps = [
     subtitle: "Database / FPS",
     description: "Track real-time performance metrics, FPS benchmarks, and database analytics for all your favorite handheld games.",
     icon: "performance" as const,
+    href: "https://fps.handheldgaminghub.com",
   },
   {
     title: "Handhelds All You Need!",
     subtitle: "Comparisons / Guides",
     description: "Comprehensive side-by-side comparisons and in-depth guides to help you find your perfect gaming companion.",
     icon: "compare" as const,
+    href: "https://app.handheldgaminghub.com",
   },
   {
     title: "Handheld Matchmaker",
     subtitle: "Questionnaire / Companion",
     description: "Answer a few questions and let our AI-powered matchmaker find the ideal handheld device for your gaming style.",
     icon: "matchmaker" as const,
+    href: "https://match.handheldgaminghub.com",
   },
   {
     title: "What Reviewers Say",
     subtitle: "Review Aggregator",
     description: "Aggregated scores and insights from top tech reviewers, all in one place for quick decision making.",
     icon: "reviews" as const,
+    href: "https://wrs.handheldgaminghub.com",
   },
 ];
 
@@ -40,6 +44,7 @@ const TechSection = () => {
               subtitle={app.subtitle}
               description={app.description}
               icon={app.icon}
+              href={app.href}
               delay={index * 1250}
             />
           ))}
