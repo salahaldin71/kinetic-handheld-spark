@@ -6,23 +6,23 @@
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 5%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 5%;
 
     --primary: 145 100% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 5%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
 
     --accent: 145 100% 35%;
     --accent-foreground: 0 0% 100%;
@@ -30,8 +30,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
+    --border: 0 0% 85%;
+    --input: 0 0% 90%;
     --ring: 145 100% 35%;
 
     --radius: 0.5rem;
@@ -39,7 +39,7 @@
     /* Custom colors */
     --neon-green: 145 100% 35%;
     --neon-green-glow: 145 100% 45%;
-    --dark-surface: 0 0% 8%;
+    --dark-surface: 0 0% 95%;
     --parallax-text: 145 100% 35%;
   }
 }
@@ -194,15 +194,15 @@
   .banner-card:hover .banner-title,
   .banner-card:hover .banner-description,
   .banner-card:hover .banner-icon {
-    color: hsl(var(--background)) !important;
+    color: hsl(0 0% 100%) !important;
   }
 
   .banner-card:hover .parallax-bg {
-    color: hsl(var(--background) / 0.15) !important;
+    color: hsl(0 0% 100% / 0.15) !important;
   }
 
   .banner-card:hover .device-preview {
-    border-color: hsl(var(--background)) !important;
-    color: hsl(var(--background)) !important;
+    border-color: hsl(0 0% 100%) !important;
+    color: hsl(0 0% 100%) !important;
   }
 }
