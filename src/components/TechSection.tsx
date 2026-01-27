@@ -5,14 +5,14 @@ const apps = [
     title: "HandheldGamingHub Performance",
     subtitle: "Database / FPS",
     description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.",
-    icon: "performance" as const,
+    icon: "compare" as const,
     href: "https://fps.handheldgaminghub.com",
   },
   {
     title: "Handhelds All You Need!",
     subtitle: "Comparisons / Guides",
     description: "Comprehensive side-by-side comparisons and in-depth guides to help you find your perfect gaming companion.",
-    icon: "compare" as const,
+    icon: "performance" as const,
     href: "https://app.handheldgaminghub.com",
   },
   {
