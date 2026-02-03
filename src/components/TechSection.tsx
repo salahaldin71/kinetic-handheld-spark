@@ -2,12 +2,11 @@ import AppBanner from "./AppBanner";
 
 const apps = [
   {
-    title: "HandheldGamingHub Performance",
-    subtitle: "Database / FPS",
-    description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.",
-    icon: "compare" as const,
-    href: "https://fps.handheldgaminghub.com",
-    comingSoon: true,
+    title: "What Reviewers Say",
+    subtitle: "Review Aggregator",
+    description: "Aggregated scores and insights from top tech reviewers, all in one place for quick decision making.",
+    icon: "reviews" as const,
+    href: "https://wrs.handheldgaminghub.com",
   },
   {
     title: "Handhelds All You Need!",
@@ -24,11 +23,12 @@ const apps = [
     href: "https://match.handheldgaminghub.com",
   },
   {
-    title: "What Reviewers Say",
-    subtitle: "Review Aggregator",
-    description: "Aggregated scores and insights from top tech reviewers, all in one place for quick decision making.",
-    icon: "reviews" as const,
-    href: "https://wrs.handheldgaminghub.com",
+    title: "HandheldGamingHub Performance",
+    subtitle: "Database / FPS",
+    description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.",
+    icon: "compare" as const,
+    href: "https://fps.handheldgaminghub.com",
+    comingSoon: true,
   },
 ];
 
