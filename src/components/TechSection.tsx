@@ -36,12 +36,12 @@ const TechSection = () => {
     <section className="min-h-screen bg-background py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+        <div className="mb-8">
+          <h1 className="text-xl md:text-2xl font-semibold text-foreground mb-1">
             Choose Your Tool
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-            Select from our suite of handheld gaming apps to find exactly what you need
+          <p className="text-sm text-muted-foreground">
+            Select from our suite of handheld gaming apps
           </p>
         </div>
         
