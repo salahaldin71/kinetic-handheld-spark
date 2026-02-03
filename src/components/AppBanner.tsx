@@ -9,6 +9,7 @@ interface AppBannerProps {
   icon: "performance" | "compare" | "matchmaker" | "reviews";
   href?: string;
   delay?: number;
+  comingSoon?: boolean;
 }
 
 const iconMap = {
@@ -18,11 +19,11 @@ const iconMap = {
   reviews: MessageSquare,
 };
 
-const AppBanner = ({ title, subtitle, description, icon, href, delay = 0 }: AppBannerProps) => {
+const AppBanner = ({ title, subtitle, description, icon, href, delay = 0, comingSoon = false }: AppBannerProps) => {
   const [isGlitching, setIsGlitching] = useState(false);
 
   const handleClick = () => {
-    if (href) {
+    if (href && !comingSoon) {
       window.open(href, "_blank", "noopener,noreferrer");
     }
   };
@@ -48,7 +49,7 @@ const AppBanner = ({ title, subtitle, description, icon, href, delay = 0 }: AppB
   }, [delay]);
 
   return (
-    <div onClick={handleClick} className="banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 cursor-pointer group">
+    <div onClick={handleClick} className={`banner-card relative overflow-hidden rounded-lg border border-border bg-card px-6 py-4 group ${comingSoon ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}>
       {/* Water Fill Effect */}
       <div className="water-fill">
         <div className="water-wave" />
@@ -72,6 +73,11 @@ const AppBanner = ({ title, subtitle, description, icon, href, delay = 0 }: AppB
             <span className="text-xs font-inter uppercase tracking-widest text-muted-foreground">
               {subtitle}
             </span>
+            {comingSoon && (
+              <span className="text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded">
+                Coming Soon
+              </span>
+            )}
           </div>
           
           <h3
