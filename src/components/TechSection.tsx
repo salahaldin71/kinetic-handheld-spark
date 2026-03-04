@@ -42,15 +42,7 @@ const TechSection = () => {
   return (
     <section className="min-h-screen bg-background py-16 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-xl md:text-2xl font-semibold text-foreground mb-1">
-            Choose Your Tool
-          </h1>
-          <p className="text-sm text-muted-foreground">
-            Select from our suite of handheld gaming apps
-          </p>
-        </div>
+        
         
         {/* App Banners Grid */}
         <div className="space-y-6">
