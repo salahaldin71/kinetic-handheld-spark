@@ -27,8 +27,7 @@ const apps = [
     subtitle: "Database / FPS",
     description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.",
     icon: "compare" as const,
-    href: "https://fps.handheldgaminghub.com",
-    comingSoon: true,
+    href: "https://fps.handheldgaminghub.com/",
   },
 ];
 
@@ -56,7 +55,7 @@ const TechSection = () => {
               description={app.description}
               icon={app.icon}
               href={app.href}
-              comingSoon={app.comingSoon}
+              
               delay={index * 1250}
             />
           ))}
