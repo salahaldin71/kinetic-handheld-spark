@@ -40,7 +40,7 @@ const apps = [
 
 const TechSection = () => {
   return (
-    <section className="min-h-screen bg-background py-16 px-4 md:px-8 lg:px-16">
+    <section className="bg-background py-6 px-4 md:px-8 lg:px-16">
       <div className="max-w-7xl mx-auto">
         
         
