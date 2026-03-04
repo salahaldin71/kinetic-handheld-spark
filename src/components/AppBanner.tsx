@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { Gamepad2, BarChart3, HelpCircle, MessageSquare } from "lucide-react";
+import { Gamepad2, BarChart3, HelpCircle, MessageSquare, Users } from "lucide-react";
 
 
 interface AppBannerProps {
   title: string;
   subtitle: string;
   description: string;
-  icon: "performance" | "compare" | "matchmaker" | "reviews";
+  icon: "performance" | "compare" | "matchmaker" | "reviews" | "owners";
   href?: string;
   delay?: number;
   comingSoon?: boolean;
@@ -17,6 +17,7 @@ const iconMap = {
   compare: Gamepad2,
   matchmaker: HelpCircle,
   reviews: MessageSquare,
+  owners: Users,
 };
 
 const AppBanner = ({ title, subtitle, description, icon, href, delay = 0, comingSoon = false }: AppBannerProps) => {
