@@ -29,6 +29,13 @@ const apps = [
     icon: "compare" as const,
     href: "https://fps.handheldgaminghub.com/",
   },
+  {
+    title: "What Owners Think",
+    subtitle: "Owner Experience",
+    description: "Real thoughts from real owners, just honest experiences from the community.",
+    icon: "reviews" as const,
+    href: "https://wot.handheldgaminghub.com/",
+  },
 ];
 
 const TechSection = () => {
