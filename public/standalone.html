@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HandheldGamingHub</title>
+  <meta name="description" content="Suite of handheld gaming apps" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-color: hsl(0 0% 85%); }
+
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 5%;
+      --card: 0 0% 98%;
+      --primary: 145 100% 35%;
+      --primary-foreground: 0 0% 100%;
+      --secondary: 0 0% 96%;
+      --muted-foreground: 0 0% 40%;
+      --border: 0 0% 85%;
+      --neon-green: 145 100% 35%;
+      --neon-green-glow: 145 100% 45%;
+    }
+
+    body {
+      background: hsl(var(--background));
+      color: hsl(var(--foreground));
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: 'Orbitron', sans-serif; }
+
+    .section {
+      background: hsl(var(--background));
+      padding: 1.5rem 1rem;
+    }
+
+    @media (min-width: 768px) { .section { padding: 1.5rem 2rem; } }
+    @media (min-width: 1024px) { .section { padding: 1.5rem 4rem; } }
+
+    .container { max-width: 80rem; margin: 0 auto; }
+    .banners { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    /* Banner Card */
+    .banner-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      border: 1px solid hsl(var(--border));
+      background: hsl(var(--card));
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .banner-card.coming-soon { opacity: 0.6; cursor: not-allowed; }
+    .banner-card:hover { border-color: hsl(var(--neon-green)); }
+
+    /* Grid */
+    .banner-grid {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: hsl(var(--muted-foreground));
+    }
+
+    .banner-icon { width: 1.25rem; height: 1.25rem; color: hsl(var(--neon-green)) !important; }
+    .title-row { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.25rem; }
+
+    .banner-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: hsl(var(--foreground));
+      margin-bottom: 0.25rem;
+      transition: all 0.3s;
+    }
+    @media (min-width: 768px) { .banner-title { font-size: 1.5rem; } }
+    @media (min-width: 1024px) { .banner-title { font-size: 1.875rem; } }
+
+    .banner-description {
+      font-family: 'Inter', sans-serif;
+      color: hsl(var(--muted-foreground));
+      font-size: 0.875rem;
+      max-width: 36rem;
+      transition: color 0.3s;
+    }
+
+    .banner-card:hover .banner-title,
+    .banner-card:hover .banner-description { color: hsl(0 0% 100%) !important; }
+
+    /* Device preview */
+    .perspective-container { perspective: 1000px; display: flex; justify-content: flex-end; }
+    .device-preview {
+      width: 4rem; height: 5rem;
+      border: 2px solid hsl(var(--primary));
+      border-radius: 0.75rem;
+      display: flex; align-items: center; justify-content: center;
+      background: hsl(var(--secondary) / 0.5);
+      backdrop-filter: blur(4px);
+      overflow: hidden;
+      transform: rotateY(-15deg) rotateX(5deg);
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+    @media (min-width: 768px) { .device-preview { width: 5rem; height: 6rem; } }
+    @media (min-width: 1024px) { .device-preview { width: 6rem; height: 7rem; } }
+    .device-preview:hover { transform: rotateY(-5deg) rotateX(2deg) scale(1.05); }
+    .banner-card:hover .device-preview { border-color: hsl(0 0% 100%) !important; color: hsl(0 0% 100%) !important; }
+
+    .device-icon {
+      width: 2rem; height: 2rem; color: hsl(var(--primary));
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(12px);
+    }
+    @media (min-width: 768px) { .device-icon { width: 2.5rem; height: 2.5rem; } }
+    @media (min-width: 1024px) { .device-icon { width: 3rem; height: 3rem; } }
+    .banner-card:hover .device-icon { transform: translateY(0); }
+
+    /* Bottom accent */
+    .bottom-accent {
+      position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(to right, transparent, hsl(var(--primary)), transparent);
+      opacity: 0.5; transition: opacity 0.3s;
+    }
+    .banner-card:hover .bottom-accent { opacity: 1; }
+
+    /* Water fill */
+    .water-fill {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, #00b150 0%, #00c45a 50%, #00d864 100%);
+      transform: translateY(100%);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
+    }
+    .water-wave {
+      position: absolute; top: -15px; left: 0; width: 200%; height: 20px;
+      background: linear-gradient(to top, #00d864 0%, #00e86e 100%);
+      mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='black'/%3E%3C/svg%3E");
+      -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='black'/%3E%3C/svg%3E");
+      mask-size: 50% 100%; -webkit-mask-size: 50% 100%;
+      animation: wave 2s linear infinite;
+    }
+    .banner-card:hover .water-fill { transform: translateY(35%); }
+    @media (max-width: 768px) { .banner-card:hover .water-fill { transform: translateY(15%); } }
+    @media (max-width: 480px) { .banner-card:hover .water-fill { transform: translateY(10%); } }
+
+    /* Bubbles */
+    .water-bubbles {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+      overflow: hidden; pointer-events: none; z-index: 2;
+    }
+    @media (max-width: 768px) { .water-bubbles { height: 85%; } }
+    @media (max-width: 480px) { .water-bubbles { height: 90%; } }
+
+    .bubble {
+      position: absolute; bottom: 0; border-radius: 50%; opacity: 0;
+      background: radial-gradient(circle at 30% 30%, hsl(0 0% 100% / 0.9), hsl(0 0% 100% / 0.4));
+      box-shadow: 0 0 4px hsl(0 0% 100% / 0.5), inset 0 0 4px hsl(0 0% 100% / 0.3);
+      animation-play-state: paused;
+    }
+    .banner-card:hover .bubble { animation-play-state: running; }
+
+    .bubble-1 { width: 12px; height: 12px; left: 15%; animation: bubble-rise 1.8s ease-in-out infinite; }
+    .bubble-2 { width: 8px; height: 8px; left: 30%; animation: bubble-rise 2.2s ease-in-out infinite; animation-delay: 0.3s; }
+    .bubble-3 { width: 14px; height: 14px; left: 50%; animation: bubble-rise 2s ease-in-out infinite; animation-delay: 0.5s; }
+    .bubble-4 { width: 7px; height: 7px; left: 70%; animation: bubble-rise 1.6s ease-in-out infinite; animation-delay: 0.8s; }
+    .bubble-5 { width: 10px; height: 10px; left: 85%; animation: bubble-rise 2.4s ease-in-out infinite; animation-delay: 1s; }
+
+    /* Glitch */
+    .glitch-active { animation: glitch 0.3s steps(2); }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 hsl(var(--neon-green)), -2px 0 hsl(0, 100%, 50%); transform: translate(0); }
+      20% { text-shadow: -2px 0 hsl(var(--neon-green)), 2px 0 hsl(0, 100%, 50%); transform: translate(-2px, 2px); }
+      40% { text-shadow: 2px 0 hsl(var(--neon-green)), -2px 0 hsl(180, 100%, 50%); transform: translate(2px, -2px); }
+      60% { text-shadow: -2px 0 hsl(var(--neon-green)), 2px 0 hsl(0, 100%, 50%); transform: translate(-2px, 0); }
+      80% { text-shadow: 2px 0 hsl(var(--neon-green)), -2px 0 hsl(180, 100%, 50%); transform: translate(2px, 2px); }
+      100% { text-shadow: none; transform: translate(0); }
+    }
+
+    @keyframes wave {
+      0% { transform: translateX(0) translateY(0); }
+      50% { transform: translateX(-25%) translateY(-3px); }
+      100% { transform: translateX(-50%) translateY(0); }
+    }
+
+    @keyframes bubble-rise {
+      0% { transform: translateY(0) scale(0.5); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.5; }
+      100% { transform: translateY(-80px) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="banners" id="banners"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const apps = [
+      { title: "What Reviewers Say", subtitle: "Review Aggregator", description: "Aggregated scores and insights from top tech reviewers, all in one place for quick decision making.", icon: "reviews", href: "https://wrs.handheldgaminghub.com" },
+      { title: "Handhelds All You Need!", subtitle: "Comparisons / Guides", description: "Comprehensive side-by-side comparisons and in-depth guides to help you find your perfect gaming companion.", icon: "performance", href: "https://app.handheldgaminghub.com" },
+      { title: "Handheld Matchmaker", subtitle: "Questionnaire / Companion", description: "Answer a few questions and let our matchmaker find the ideal handheld device for your gaming style.", icon: "matchmaker", href: "https://match.handheldgaminghub.com" },
+      { title: "HandheldGamingHub Performance", subtitle: "Database / FPS", description: "Community-driven FPS database for handheld gaming devices and performance database for all your favorite handheld games.", icon: "compare", href: "https://fps.handheldgaminghub.com/" },
+      { title: "What Owners Think", subtitle: "Owner Experience", description: "Real thoughts from real owners, just honest experiences from the community.", icon: "owners", href: "https://wot.handheldgaminghub.com/" },
+    ];
+
+    const icons = {
+      reviews: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>',
+      performance: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>',
+      matchmaker: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>',
+      compare: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"/><line x1="14" x2="18" y1="12" y2="12"/><path d="M6 7v10"/><path d="M18 7v10"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>',
+      owners: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    };
+
+    const container = document.getElementById('banners');
+
+    apps.forEach((app, index) => {
+      const card = document.createElement('div');
+      card.className = 'banner-card';
+      card.onclick = () => window.open(app.href, '_blank', 'noopener,noreferrer');
+      card.innerHTML = `
+        <div class="water-fill"><div class="water-wave"></div></div>
+        <div class="water-bubbles">
+          <div class="bubble bubble-1"></div>
+          <div class="bubble bubble-2"></div>
+          <div class="bubble bubble-3"></div>
+          <div class="bubble bubble-4"></div>
+          <div class="bubble bubble-5"></div>
+        </div>
+        <div class="banner-grid">
+          <div>
+            <div class="title-row">
+              <span class="banner-icon">${icons[app.icon]}</span>
+              <span class="subtitle">${app.subtitle}</span>
+            </div>
+            <h3 class="banner-title" id="title-${index}">${app.title}</h3>
+            <p class="banner-description">${app.description}</p>
+          </div>
+          <div class="perspective-container">
+            <div class="device-preview">
+              <span class="device-icon">${icons[app.icon]}</span>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-accent"></div>
+      `;
+      container.appendChild(card);
+
+      // Glitch effect
+      const titleEl = card.querySelector('.banner-title');
+      const triggerGlitch = () => {
+        titleEl.classList.add('glitch-active');
+        setTimeout(() => titleEl.classList.remove('glitch-active'), 300);
+      };
+      setTimeout(triggerGlitch, index * 1250);
+      setInterval(triggerGlitch, 5000);
+    });
+
+    // iframe resize
+    const sendHeight = () => window.parent.postMessage({ type: 'resize', height: document.documentElement.scrollHeight }, '*');
+    sendHeight();
+    window.addEventListener('resize', sendHeight);
+    setTimeout(sendHeight, 2000);
+  </script>
+</body>
+</html>
