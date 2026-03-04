@@ -33,7 +33,7 @@ const apps = [
     title: "What Owners Think",
     subtitle: "Owner Experience",
     description: "Real thoughts from real owners, just honest experiences from the community.",
-    icon: "reviews" as const,
+    icon: "owners" as const,
     href: "https://wot.handheldgaminghub.com/",
   },
 ];
